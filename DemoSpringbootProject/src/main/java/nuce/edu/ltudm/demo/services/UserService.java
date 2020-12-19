@@ -1,6 +1,6 @@
 package nuce.edu.ltudm.demo.services;
 
-import nuce.edu.ltudm.demo.dao.UserRepository;
+import nuce.edu.ltudm.demo.repository.UserRepository;
 import nuce.edu.ltudm.demo.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
