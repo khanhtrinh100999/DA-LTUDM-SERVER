@@ -5,6 +5,7 @@ package nuce.edu.ltudm.demo.controller;
  * @author Khanh Trinh
  */
 import java.security.Principal;
+import java.util.Properties;
 import nuce.edu.ltudm.demo.dto.logindto;
 import nuce.edu.ltudm.demo.dto.registerdto;
 import nuce.edu.ltudm.demo.entity.User;
@@ -18,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,10 +44,10 @@ public class AccountController {
                     new CustomErrorType("user with username " + newUser.getUsername() + " already exist "),
                     HttpStatus.CONFLICT);
         }
-            return new ResponseEntity<User>(userService.save(newUser), HttpStatus.CREATED);
+        return new ResponseEntity<User>(userService.save(newUser), HttpStatus.CREATED);
     }
-    
-     @CrossOrigin
+
+    @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> Login(@RequestBody logindto user) {
         if (userService.find(user.getUsername()) == null) {
@@ -54,15 +56,7 @@ public class AccountController {
                     new CustomErrorType("user with username " + user.getUsername() + " not exist "),
                     HttpStatus.CONFLICT);
         }
-            return new ResponseEntity<>( userService.find(user.getUsername()), HttpStatus.OK);
+        return new ResponseEntity<>(userService.find(user.getUsername()), HttpStatus.OK);
     }
-
-    // this is the login api/service.
-//    @CrossOrigin
-//    @RequestMapping("/login")
-//    public Principal user(Principal principal) {
-//        logger.info("user logged " + principal);
-//        return principal;
-//    }
 
 }

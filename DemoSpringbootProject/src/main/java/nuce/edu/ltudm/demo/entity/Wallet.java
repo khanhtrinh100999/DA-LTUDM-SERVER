@@ -23,38 +23,39 @@ public class Wallet {
 
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
     private Long money;
+    private String username;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "wallet", cascade = CascadeType.ALL)
-    private Set<Detail> detail;
-
-    public Set<Detail> getDetail() {
-        return detail;
-    }
-
-    public void setDetail(Set<Detail> detail) {
-        this.detail = detail;
-    }
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "wallet", cascade = CascadeType.ALL)
+//    private Set<Detail> detail;
+//
+//    public Set<Detail> getDetail() {
+//        return detail;
+//    }
+//
+//    public void setDetail(Set<Detail> detail) {
+//        this.detail = detail;
+//    }
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getMoney() {
@@ -64,5 +65,15 @@ public class Wallet {
     public void setMoney(Long money) {
         this.money = money;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    
 }
 

@@ -8,16 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.context.annotation.Scope;
 
 /**
  *
  * @author Khanh Trinh
  */
 @Entity
-@Table
+@Table(name="Detail")
+@Scope("session")
 public class Detail {
     @Id // primary key
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_detail;
     
     private String name_detail;
@@ -25,13 +27,17 @@ public class Detail {
     private Long money_detail;
     private String status_detail;
     
-    @ManyToOne
-    @JoinColumn(name="user_Id")
-    private User user;
+//    private Long wallet;
+    private String username;
     
-    @ManyToOne
-    @JoinColumn(name="wallet_id")
-    private Wallet wallet;
+    
+//    @ManyToOne
+//    @JoinColumn(name="user_id")
+//    private User user;
+//    
+//    @ManyToOne
+//    @JoinColumn(name="wallet_id")
+//    private Wallet wallet;
 
     public Long getId_detail() {
         return id_detail;
@@ -73,19 +79,23 @@ public class Detail {
         this.status_detail = status_detail;
     }
 
-    public User getUser() {
-        return user;
+//    public Long getWallet() {
+//        return wallet;
+//    }
+//
+//    public void setWallet(Long wallet) {
+//        this.wallet = wallet;
+//    }
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
+ 
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
+    
 }

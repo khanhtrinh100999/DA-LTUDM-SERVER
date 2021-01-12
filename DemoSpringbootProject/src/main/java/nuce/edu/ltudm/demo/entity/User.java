@@ -67,31 +67,26 @@ public class User  implements UserDetails {
         this.fullname = fullname;
     }
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Detail> detail;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+//    private Set<Detail> detail;
 
-//    public Set<Detail> getDetail() {
-//        return detail;
+
+//    public void setDetail(Set<Detail> detail) {
+//        this.detail = detail;
 //    }
 
-    public void setDetail(Set<Detail> detail) {
-        this.detail = detail;
-    }
-
-//    @OneToOne(mappedBy = "user")
+//
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY)
 //    private Wallet wallet;
-    
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private Wallet wallet;
 
 //    public Wallet getWallet() {
 //        return wallet;
 //    }
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
+//    public void setWallet(Wallet wallet) {
+//        this.wallet = wallet;
+//    }
 
     @JsonIgnore
 	@Override
