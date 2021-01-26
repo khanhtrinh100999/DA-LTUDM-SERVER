@@ -21,9 +21,11 @@ public class DetailService {
         Wallet wallet = walletResponsitory.findOne(detail.getUsername());
         if(detail.getStatus_detail().toLowerCase().equals("chi")) {
             wallet.setMoney(wallet.getMoney() - detail.getMoney_detail());
+            wallet.setChi(wallet.getChi() + detail.getMoney_detail());
         }
         if(detail.getStatus_detail().toLowerCase().equals("thu")) {
             wallet.setMoney(wallet.getMoney() + detail.getMoney_detail());
+            wallet.setThu(wallet.getThu() + detail.getMoney_detail());
         }
         walletResponsitory.saveAndFlush(wallet);
         return detailRepository.saveAndFlush(detail);

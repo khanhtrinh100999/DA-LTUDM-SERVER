@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,23 +44,34 @@ public class DetailController {
 
     @CrossOrigin
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<?> addDetail(@RequestBody Detail newDetail){
+    public ResponseEntity<?> addDetail(@RequestBody Detail newDetail) {
         detailService.save(newDetail);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
     @CrossOrigin
     @GetMapping("/all/{username}")
     public List<Detail> getAll(@PathVariable String username) {
         return detailService.findAll(username);
     }
-    
+
     @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public void deleteDetail(@PathVariable String id) {
         detailService.deleteDetail(Long.parseLong(id));
     }
     
+    @CrossOrigin
+    @GetMapping("/get/{id}")
+    public Detail get(@PathVariable Long id) {
+        return detailService.find(id);
+    }
 
-    
+    @CrossOrigin
+    @PutMapping("/put/{id}")
+    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Detail input) {
+        detailService.save(input);
+        return new ResponseEntity<>(null, HttpStatus.valueOf(303));
+    }
+
 }

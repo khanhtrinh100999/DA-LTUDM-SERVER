@@ -26,29 +26,27 @@ public class Wallet {
     private Long id;
     private Long money;
     private String username;
+    private Long thu = 0L;
+    private Long chi = 0L;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "wallet", cascade = CascadeType.ALL)
-//    private Set<Detail> detail;
-//
-//    public Set<Detail> getDetail() {
-//        return detail;
-//    }
-//
-//    public void setDetail(Set<Detail> detail) {
-//        this.detail = detail;
-//    }
-//
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public Long getThu() {
+        return thu;
+    }
+
+    public void setThu(Long thu) {
+        this.thu = thu;
+    }
+
+    public Long getChi() {
+        return chi;
+    }
+
+    public void setChi(Long chi) {
+        this.chi = chi;
+    }
+
+    
+
 
     public Long getId() {
         return id;

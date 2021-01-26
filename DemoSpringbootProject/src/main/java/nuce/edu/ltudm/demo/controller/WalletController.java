@@ -2,6 +2,7 @@
 package nuce.edu.ltudm.demo.controller;
 
 import java.util.List;
+import nuce.edu.ltudm.demo.dto.putWalletDto;
 import nuce.edu.ltudm.demo.entity.Wallet;
 import nuce.edu.ltudm.demo.repository.WalletRepository;
 import nuce.edu.ltudm.demo.services.WalletService;
@@ -54,6 +55,19 @@ public class WalletController {
     @CrossOrigin
     @PutMapping("/put/{username}")
     public ResponseEntity<?> put(@PathVariable String username, @RequestBody Wallet input) {
+         if (walletService.find(input.getUsername()) == null) {
+            logger.error("wallet no exist " + input.getUsername());
+            return new ResponseEntity(
+                    new CustomErrorType("The wallet is with username " + input.getUsername() + " no exist "),
+                    HttpStatus.CONFLICT);
+        }
+         if (!walletService.find(input.getUsername()).getUsername().equals(username)) {
+            logger.error("error uername : " + username);
+            return new ResponseEntity(
+                    new CustomErrorType("error username : " + username),
+                    HttpStatus.CONFLICT);
+        }
+         
         walletService.save(input);
         return new ResponseEntity<>(null,HttpStatus.valueOf(303));
     }
